@@ -45,11 +45,21 @@ function handleGalleryItemClick(event) {
 }
 
 function openModalGallery(url) {
+   
     const modalItem = basicLightbox.create(`
     <img src="${url}" width="800" height="600">
 `);
-    return modalItem.show();
+    modalItem.show(() => console.log('lightbox now visible'));
+
+    window.addEventListener('keydown',
+        (event => {
+            if (event.code === 'Escape') {
+                modalItem.close();
+            }
+        }));
 }
+
+
 
 
 
